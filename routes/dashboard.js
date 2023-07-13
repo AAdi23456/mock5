@@ -22,7 +22,7 @@ dashboard.get("/employees", async (req, res) => {
     const conditions = {};
 
     if (department) {
-      conditions.department = department;
+      conditions.Department = department;
     }
 
     if (search) {
