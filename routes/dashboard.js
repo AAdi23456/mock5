@@ -3,22 +3,17 @@ const dashboard=express.Router()
 const { dashboardmodel } = require("../models/dashboard")
 
 dashboard.post("/employees", async (req, res) => {
-  const { FirstName, LastName, Department,Salary,Email } = req.body
- 
-  try {
-   
-  
-      const datatodb = new dashboardmodel({FirstName, LastName, Department,Salary,email:Email })
-      await datatodb.save()
-      res.status(201).json({ msg: "Data saved" })
-      console.log(err);
-  
+  const { FirstName, LastName, Department, Salary, email } = req.body;
 
+  try {
+    const datatodb = new dashboardmodel({ FirstName, LastName, Department, Salary, email });
+    await datatodb.save();
+    res.status(201).json({ msg: "Data saved" });
   } catch (error) {
-    console.log(error)
-    res.json("failed")
+    console.log(error);
+    res.status(500).json({ error: "Failed to save data" });
   }
-})
+});
 dashboard.get("/employees", async (req, res) => {
   try {
     const { page = 1, limit = 5, department, sortBy, search } = req.query;
