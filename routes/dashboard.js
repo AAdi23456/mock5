@@ -49,15 +49,16 @@ dashboard.get("/employees", async (req, res) => {
     res.status(500).json({ error: "An error occurred" });
   }
 });
-dashboard.post("/delete/:id", async (req, res) => {
-  const { id} = req.query
+dashboard.delete("/delete/:id", async (req, res) => {
+  const { id } = req.params;
 
   try {
-  const data= await dashboard.findByIdAndDelete(id)
+    const data = await dashboard.findByIdAndDelete(id);
     res.status(201).json({ msg: "Data Deleted" });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ error: "Failed to save data" });
+    res.status(500).json({ error: "Failed to delete data" });
   }
 });
+
  module.exports=dashboard
