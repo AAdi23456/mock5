@@ -11,7 +11,7 @@ app.use(cors())
 app.use("/signup",register)
 app.use("/login",login)
 
-app.use("/employees", dashboard)
+app.use("/", dashboard)
 
 
 app.listen(8080, () => {
