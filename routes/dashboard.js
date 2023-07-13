@@ -53,7 +53,7 @@ dashboard.delete("/delete/:id", async (req, res) => {
   const { id } = req.params;
 
   try {
-    const data = await dashboard.findByIdAndDelete(id);
+    const data = await dashboardmodel.findByIdAndDelete(id);
     res.status(201).json({ msg: "Data Deleted" });
   } catch (error) {
     console.log(error);
