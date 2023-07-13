@@ -8,9 +8,9 @@ dashboard.post("/employees", async (req, res) => {
   try {
    
   
-      const datatodb = new dashboardmodel({FirstName, LastName, Department,Salary,Email })
+      const datatodb = new dashboardmodel({FirstName, LastName, Department,Salary,email:Email })
       await datatodb.save()
-      res.status(201).json({ msg: "regestration success" })
+      res.status(201).json({ msg: "Data saved" })
       console.log(err);
   
 
